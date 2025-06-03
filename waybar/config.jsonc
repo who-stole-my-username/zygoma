@@ -1,0 +1,111 @@
+{
+  "position": "bottom",
+  "modules-left": ["custom/exit", "cpu", "memory", "hyprland/workspaces"],
+  "modules-center": ["custom/launcher"],
+  "modules-right": ["network", "pulseaudio", "backlight", "battery", "clock"],
+  
+  "hyprland/workspaces": {
+	"active-only": false,
+	"all-outputs": true,
+	"format": "{icon}",
+	"show-special": true,
+	"format-icons": {
+    		"1": "",
+    		"2": "",
+    		"3": "",
+    		"4": "",
+                "5": "",
+                "6": "",
+		"default": "",
+		"active": "",
+		"urgent": ""
+        }
+  },
+
+  "memory": {
+    "interval": 3,
+    "format": "{icon} {percentage}%",
+    "format-icons": ["󰾆 ","󰾅 ","󰓅 "],
+    "max-length": 10
+  },
+
+  "backlight": {
+    "interval": 3,
+    "format": "{icon} {percent}%",
+    "format-icons": ["󰛩 ","󱩎 ","󱩏 ","󱩐 ","󱩑 ","󱩒 ","󱩓 ","󱩔 ","󱩕 ","󱩖 ","󰛨 "],
+    "max-length": 10
+  },
+  
+  "cpu": {
+    "interval": 1,
+    "format": "  {}%",
+    "max-length": 10
+    },
+
+  "custom/exit": {
+    "format": "⏻",
+    "on-click": "wlogout",
+    "tooltip": false
+  },
+
+  "custom/launcher": {
+	"format": " ",
+	"tooltip": false,
+	"on-click": "wofi --show drun"
+  },
+  
+  "clock": {
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "format-alt": "󰸗 {:%a, %d %b %Y}",
+	"format": "⠀ {:%H:%M}",
+        "calendar": {
+                    "mode"          : "year",
+                    "mode-mon-col"  : 3,
+                    "weeks-pos"     : "right",
+                    "on-scroll"     : 1,
+                    "format": {
+                              "months":     "<span color='#b4befe'><b>{}</b></span>",
+                              "days":       "<span color='#74c7ec'><b>{}</b></span>",
+                              "weeks":      "<span color='#89dceb'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#89b4fa'><b>{}</b></span>",
+                              "today":      "<span color='#f38ba8'><b><u>{}</u></b></span>"
+                              }
+                    },
+        "actions":  {
+                    "on-click-right": "mode",
+                    "on-scroll-up": "tz_up",
+                    "on-scroll-down": "tz_down",
+                    "on-scroll-up": "shift_up",
+                    "on-scroll-down": "shift_down"
+                    }
+  },
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "<span size='13000' foreground='#89b4fa'>{icon} </span> {capacity}%",
+    "format-warning": "<span size='13000' foreground='#fab387'>{icon} </span> {capacity}%",
+    "format-critical": "<span size='13000' foreground='#f38ba8'>{icon} </span> {capacity}%",
+    "format-charging": "<span size='13000' foreground='#89b4fa'> </span>{capacity}%",
+    "format-plugged": "<span size='13000' foreground='#89b4fa'> </span>{capacity}%",
+    "format-alt": "<span size='13000' foreground='#89b4fa'>{icon} </span> {time}",
+    "format-full": "<span size='13000' foreground='#89b4fa'> </span>{capacity}%",
+    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "tooltip-format": "{time}"
+  },
+  "network": {
+    "format-wifi": "{icon}",
+    "format-disconnected": "󰤭 ",
+    "tooltip-format-wifi": "{essid}",
+    "format-icons": ["󰤯 ","󰤟 ","󰤢 ","󰤥 ","󰤨 "]
+  },
+  "pulseaudio": {
+      "format": "{icon} {volume}%",
+      "format-muted": "󰝟 ",
+      "format-icons": {
+          "default": ["󰕿 ", "󰖀 ", "󰕾 "]
+      },
+      "on-click": "pavucontrol"
+  }
+}
