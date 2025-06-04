@@ -1,4 +1,4 @@
 # I use Arch btw
 ## My Configuration
-![[~/Pictures/config.png]]
+![alt text](~/Pictures/config.png "config")
 
