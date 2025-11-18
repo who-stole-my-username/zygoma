@@ -1,9 +1,10 @@
-# I use Arch btw
-## This is my configuration right now
+# I use Cachy btw
+## This is not my configuration right now (its an old one)
 ![My config](config.png "My config")
 
 ## Components
-- Distro: Arch Linux (btw)
+- Distro: Cachy Linux
 - WM: Hyprland
+- Terminal: Foot
 - Bar: Waybar
 - Menu: Tofi
