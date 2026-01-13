@@ -1,0 +1,87 @@
+{
+  "position": "top",
+  "modules-left": ["cpu", "memory"],
+  "modules-center": ["hyprland/workspaces"],
+  "modules-right": ["group/stats", "clock"],
+  
+  "hyprland/workspaces": {
+    "active-only": false,
+    "all-outputs": true,
+    "format": "{icon}",
+    "on-scroll-up": "hyprctl dispatch workspace e-1",
+    "on-scroll-down": "hyprctl dispatch workspace e+1",
+    "show-special": true,
+    "format-icons": {
+      "default": "",
+      "active": "",
+      "urgent": ""
+    }
+  },
+
+  "group/stats": {
+    "orientation": "inherit", 
+      "modules": ["network", "pulseaudio","backlight", "battery"]
+  },
+
+  "memory": {
+    "interval": 3,
+    "format": "{icon} {percentage}%",
+    "format-icons": ["󰾆 ","󰾅 ","󰓅 "],
+    "max-length": 10
+  },
+
+  "backlight": {
+    "interval": 3,
+    "format": "{icon}",
+    "format-icons": ["󰛩 ","󱩎 ","󱩏 ","󱩐 ","󱩑 ","󱩒 ","󱩓 ","󱩔 ","󱩕 ","󱩖 ","󰛨 "],
+    "tooltip": "true",
+    "tooltip-format": "{percent}%",
+    "max-length": 10
+  },
+  
+  "cpu": {
+    "interval": 1,
+    "format": "{icon} {usage}%",
+    "format-icons": [" "],
+    "max-length": 10
+  },
+
+  "clock": {
+    "interval": 1,
+    "tooltip-format": "{:%H:%M:%S}",
+    "format-alt": "󰸗  {:L%a, %d %b (%m) %Y}",
+    "format": "  {:%H:%M}"
+  },
+
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "<span size='13000'>{icon}</span>",
+    "format-warning": "<span size='13000'>{icon}</span>",
+    "format-critical": "<span size='13000'>{icon}</span>",
+    "format-charging": "<span size='13000'></span>",
+    "format-plugged": "<span size='13000'></span>",
+    "format-alt": "<span size='13000'>{icon}</span>{time}",
+    "format-full": "<span size='13000'></span>",
+    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "tooltip-format": "{capacity}%"
+  },
+  "network": {
+    "interval": 1,
+    "format-wifi": "{icon}",
+    "format-disconnected": "󰤭 ",
+    "tooltip-format-wifi": "{signalStrength}",
+    "format-icons": ["󰤯 ","󰤟 ","󰤢 ","󰤥 ","󰤨 "]
+  },
+  "pulseaudio": {
+      "format": "{icon} {volume}%",
+      "format-muted": "󰝟",
+      "format-icons": {
+          "default": ["󰕿 ", "󰖀 ", "󰕾 "],
+          "headphone": [" "]
+      },
+      "on-click": "pavucontrol"
+  }
+}

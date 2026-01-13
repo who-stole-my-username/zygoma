@@ -1,0 +1,137 @@
+@import "colors.css"; 
+
+* {
+    font-family: "Caskaydia Cove Nerd Font";
+    font-size: 16px;
+    min-height: 0;
+}
+
+.modules-center {
+    padding: 0px 3px 0px 0px;
+    margin: 5px 0px 0px 0px;
+    border-radius: 10px;
+    background: @overlay-2;
+}
+
+.modules-left {
+    padding: 0px;
+    margin: 5px 0px 0px 5px;
+    border-radius: 10px;
+    background: @overlay-2;
+}
+
+/*.modules-right {
+    padding: 0px;
+    margin: 5px 5px 0px 0px;
+    border-radius: 10px;
+    background: @overlay-2;
+}*/
+
+#stats {
+    padding: 0px;
+    margin: 5px 0px 0px 5px;
+    border-radius: 10px;
+    background: @overlay-2;
+}
+
+window#waybar {
+    background: transparent;
+    transition-property: background-color;
+    transition-duration: 0.1s;
+    border-bottom: none;
+}
+
+#workspaces {
+    padding: 0px 3px;
+}
+
+#workspaces button {
+    padding: 0 3px;
+    margin: 2px 0px 2px 0px;
+    color: @icon;
+}
+
+#workspaces button.focused {
+    color: @red;
+}
+
+#workspaces button.active {
+    color: @accent;
+}
+
+#workspaces button.urgent {
+    color: @red
+}
+
+#memory {
+    padding: 0px 10px;
+    margin: 2px 0px 2px 0px;
+    color: @icon;
+}
+
+#cpu {
+    padding: 0px 10px; 
+    margin: 2px 0px 2px 0px;
+    color: @icon;
+}
+
+#backlight {
+    padding: 0px 10px;
+    margin: 5px 0px 5px 0px;
+    color: @icon;
+}
+
+#clock {
+    padding: 0px 10px;
+    margin: 5px 5px 0px 5px;
+    color: @icon;
+    border-radius: 10px;
+    background: @overlay-2;
+}
+
+#pulseaudio {
+    padding: 0px 10px;
+    margin: 2px 0px 2px 0px;
+    color: @icon;
+    border: none;
+    border-radius: 100px;
+}
+
+#network {
+    padding: 0px 10px;
+    margin: 2px 0px 2px 0px;
+    color: @icon;
+    border: none;
+}
+
+#battery {
+    padding: 0px 10px;
+    margin: 2px 0px 2px 0px;
+    color: @icon;
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: none; /*There was some random default value set here so this line is somewhat important*/
+}
+
+#battery.critical {
+    padding: 0px 10px;
+    margin: 2px 0px 2px 0px;
+    color: @red;
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: none; /*There was some random default value set here so this line is somewhat important*/
+}
+
+#battery.warning {
+    padding: 0px 10px;
+    margin: 2px 0px 2px 0px;
+    color: @orange;
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: none; /*There was some random default value set here so this line is somewhat important*/
+}
+
+#battery.full {
+    padding: 0px 10px;
+    margin: 2px 0px 2px 0px;
+    color: @green;
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: none; /*There was some random default value set here so this line is somewhat important*/
+}
