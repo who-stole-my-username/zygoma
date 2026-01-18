@@ -1,0 +1,16 @@
+@define-color background-color #282828;
+
+@define-color overlay #3C3836;
+@define-color overlay-2 #504945;
+@define-color overlay-3 #665C54;
+
+@define-color text #EBDBB2;
+@define-color icon #FBF1C7;
+
+@define-color accent #98971A;
+
+@define-color red #CC241D;
+@define-color orange #D65D0E;
+@define-color yellow #D79921;
+@define-color green #98971A;
+@define-color mauve #B16286;

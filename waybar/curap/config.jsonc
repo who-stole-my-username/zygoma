@@ -3,6 +3,7 @@
   "modules-left": ["cpu", "memory"],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": ["group/stats", "clock"],
+  "reload_style_on_change": true,
   
   "hyprland/workspaces": {
     "active-only": false,

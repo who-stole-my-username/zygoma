@@ -4,62 +4,88 @@ SUCCES="\033[1;32m"
 RESET="\033[0m"
 theme_dir="$HOME/.config/colorschemes"
 
+colorscheme="$1"
+theme="$theme_dir/$colorscheme"
+
+#if the user doesn't enter a valid theme name
+if [ ! -d $theme ]; then
+  echo ""
+  echo -e "${ERROR}Not a valid theme name!${RESET}"
+  echo ""
+  echo -e "${SUCCES}Available themes:${RESET}"
+  echo ""
+  ls $theme_dir
+  echo ""
+  exit 1
+fi
+
 #if the user doesn't enter a theme name
-if [ -z "$1" ]; then
+if [ -z "$colorscheme" ]; then
+  echo ""
   echo -e "${ERROR}No theme selected!${RESET}"
-  echo "Usage: ts <themename>"
+  echo ""
+  echo -e "${SUCCES}Usage: ts <themename>${RESET}"
+  echo ""
   exit 1
 fi
 
-theme="$theme_dir/$1"
-
-#if file doesn't exist
-if [ ! -e "$theme" ]; then
-  echo -e "${ERROR}No theme found with that name!${RESET}"
-  exit 1
-fi
+echo ""
+echo -e "${SUCCES}Applying theme: ${RESET}"
 
 #Wallpaper
 echo ""
-echo "Switching the wallpaper..."
+echo "Updating wallpaper..."
 echo ""
-swww img "$HOME/.config/colorschemes/$1/wallpaper.png" --transition-type center
+swww img "$theme/wallpaper.png" --transition-type any --transition-fps 60
 
 #Waybar
-echo "Switching waybar theme..."
+echo "Updating Waybar configuration..."
 echo ""
-cp "$theme/waybar/"* "$HOME/.config/waybar/curap/"
-killall waybar
-waybar -c "$HOME/.config/waybar/curap/config.jsonc" -s "$HOME/.config/waybar/curap/style.css" > /dev/null 2>&1 & disown
+ln -sf ~/.config/colorschemes/$colorscheme/waybar/colors.css ~/.config/waybar/curap/colors.css
+killall -SIGUSR2 waybar > /dev/null 2>&1
 
-#Foot
-echo "Switching terminal theme..."
+#Kitty
+echo "Updating Kitty configuration..."
 echo ""
-cp "$theme/foot/foot.ini" "$HOME/.config/foot/"
-killall foot
-foot --server > /dev/null 2>&1 & disown
+ln -sf ~/.config/colorschemes/$colorscheme/kitty/theme.conf ~/.config/kitty/theme.conf 
+killall -USR1 kitty
 
 #Hyprland
-echo "Switching hyprland theme..."
+echo "Updating Hyprland configuration..."
 echo ""
-cp "$theme/hyprland/look.conf" "$HOME/.config/hypr/"
+ln -sf ~/.config/colorschemes/$colorscheme/hyprland/look.conf ~/.config/hypr/look.conf 
 
-#gtk
-echo "Switching gtk theme..."
+#GTK
+echo "Updating GTK configuration..."
 echo ""
-cp "$theme/gtk/settings.ini" "$HOME/.config/gtk-4.0/"
-cp "$theme/gtk/settings.ini" "$HOME/.config/gtk-3.0/"
+ln -sf ~/.config/colorschemes/$colorscheme/gtk/settings.ini ~/.config/gtk-4.0/settings.ini 
+ln -sf ~/.config/colorschemes/$colorscheme/gtk/settings.ini ~/.config/gtk-3.0/settings.ini 
 
-if [ $1 = "nord" ]; then
-  gsettings set org.gnome.desktop.interface gtk-theme "Nordic-darker"
-elif [ $1 = "catppuccin" ]; then
-  gsettings set org.gnome.desktop.interface gtk-theme "catppuccin-mocha-mauve-standard+default"
-fi
+case $colorscheme in
+  "catppuccin")
+    gtk_theme="catppuccin-mocha-mauve-standard+default"
+    icon_theme="Catppuccin-Mocha";;
+  "nord")
+    gtk_theme="Nordic-darker"
+    icon_theme="NordArc-Icons";;
+  "gruvbox")
+    gtk_theme="gruvbox-dark-gtk"
+    icon_theme="gruvbox-dark-icons-gtk";;
+esac
 
-#nvim
-echo "Switching nvim theme..."
+gsettings set org.gnome.desktop.interface gtk-theme "$gtk_theme" > /dev/null 2>&1
+gsettings set org.gnome.desktop.interface icon-theme "$icon_theme" > /dev/null 2>&1
+
+#Neovim
+echo "Updating Neovim configuration..."
 echo ""
-cp "$theme/nvim/theme.lua" "$HOME/.config/nvim/lua/plugins/"
+ln -sf ~/.config/colorschemes/$colorscheme/nvim/theme.lua ~/.config/nvim/lua/plugins/theme.lua 
 
-echo -e "${SUCCES}Theme $1 succesfully applyed!${RESET}"
+#Rofi
+echo "Updating Rofi configuration..."
 echo ""
+ln -sf ~/.config/colorschemes/$colorscheme/rofi/config.rasi ~/.config/rofi/config.rasi
+
+echo -e "${SUCCES}Theme $colorscheme succesfully applied!${RESET}"
+echo ""
+

@@ -1,0 +1,1 @@
+/home/exeteus/.config/colorschemes/catppuccin/nvim/theme.lua

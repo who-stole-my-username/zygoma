@@ -2,7 +2,7 @@ return {
   {
     "shaunsingh/nord.nvim",
     lazy = false,
-    name = "Nord",
+    name = "nord",
     priority = 1000,
 
     config = function()
